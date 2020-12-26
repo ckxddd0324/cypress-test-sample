@@ -1,0 +1,30 @@
+{
+  "name": "test-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run --browser chrome",
+    "cypress.open": "cypress open --browser chrome",
+    "cypress.report": "mochawesome-merge .e2e_output/mochawesome-report/mocha*.json -o  ./.e2e_output/mochawesome-report/output/output.json",
+    "delete.mocha.report": "del-cli --force .e2e_output",
+    "generate.mochawesome.report": "marge --reportDir ./.e2e_output/mochawesome-report/output/ ./.e2e_output/mochawesome-report/output/output.json",
+    "cypress.test": "npm run delete.mocha.report && cypress run --browser chrome && npm run cypress.report && npm run generate.mochawesome.report && open .e2e_output/mochawesome-report/output/output.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^6.2.0",
+    "cypress-multi-reporters": "^1.4.0",
+    "del-cli": "^3.0.1",
+    "install": "^0.13.0",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.1.0",
+    "npm": "^6.14.10",
+    "open": "^7.3.0"
+  },
+  "dependencies": {}
+}
