@@ -4,5 +4,7 @@ export default {
   passwordInput: '[data-testid="password"]',
   emailOptionCheckbox: '[class*="styles__termsOfService"] input',
   submitBtn: '#submit',
-  errorMsg: '[class*="styles__errorMessage"]'
+  errorMsg: '[class*="styles__errorMessage"]',
+  invalidEmailMsg: '[data-testid="emailError"]',
+  invalidUsernameMsg: '[data-testid="usernameError"]'
 };

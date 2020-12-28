@@ -12,6 +12,10 @@ import { fillSignupFormHelper } from '../helpers/helpers';
  * is able to submit it
  */
 describe('sign up process test', () => {
+  beforeEach(() => {
+    cy.reload();
+  });
+
   const today = new Date();
   it('user is able to start sign up process from home page and unable to submit form without Captcha verified', () => {
     const testData = {
@@ -41,5 +45,38 @@ describe('sign up process test', () => {
     cy.get(signupPage.errorMsg)
       .should('be.visible')
       .and('have.text', 'reCAPTCHA is required.');
+  });
+
+  /**
+   * check if the user enter the incorrect email and the
+   * error message text displays
+   */
+
+  it('error is displayed if the user fills the sign up form with an incorrect email', () => {
+    const testData = {
+      username: `testerUsername${today.getTime()}`,
+      password: `pa$$word${today.getTime()}`,
+      email: `testing_email_${today.getTime()}`,
+      checkMoreEmail: true,
+      submitForm: false
+    };
+    fillSignupFormHelper(testData);
+    cy.get(signupPage.invalidEmailMsg)
+      .should('be.visible')
+      .and('have.text', 'Please enter a valid email address.');
+  });
+
+  it('error is displayed if the user fills the sign up form with short username', () => {
+    const testData = {
+      username: `123`,
+      password: `pa$$word${today.getTime()}`,
+      email: `testing_email_${today.getTime()}@gmail.com`,
+      checkMoreEmail: true,
+      submitForm: false
+    };
+    fillSignupFormHelper(testData);
+    cy.get(signupPage.invalidUsernameMsg)
+      .should('be.visible')
+      .and('have.text', 'Use 4 to 30 letters & digits only.');
   });
 });
