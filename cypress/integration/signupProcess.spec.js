@@ -1,6 +1,16 @@
 import { homePage, signupPage, getStartedPage } from '../selectors/index';
 import { fillSignupFormHelper } from '../helpers/helpers';
 
+/**
+ * this is the test for the sign in process
+ * there is limitation on submitting the form
+ * it requires a captcha and for the test we dont have
+ * access to the API key for the disabling the captcha
+ * so the test is only checking if the user is able to fill
+ * the sign up form and try to submit it without the captcha
+ * it is expected that the test will fail which we know the user
+ * is able to submit it
+ */
 describe('sign up process test', () => {
   const today = new Date();
   it('user is able to start sign up process from home page and unable to submit form without Captcha verified', () => {

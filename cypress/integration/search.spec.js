@@ -1,5 +1,15 @@
 import { homePage, searchResultPage } from '../selectors/index';
 
+/**
+ * this is the search docker image process test
+ * it does not required the user to be signed in
+ * it will type node as the searching images text
+ * after the search is completed, it except that
+ * there are test results and container displays on the page
+ * also, this does not check or validate the search,
+ * this should be taken place as API test or unit test to
+ * validate the search result
+ */
 describe('search docker image process test', () => {
   it('user is able to docker images without signin', () => {
     const testData = 'node';
